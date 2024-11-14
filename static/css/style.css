@@ -4,53 +4,107 @@
     padding: 0;
 }
 
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
-    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 100vh;
+    color: #333;
 }
 
-.dashboard-container {
+.container1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.dashboard-container {
+    width: 100%;
+    overflow: hidden;
 }
 
 .dashboard-header {
     text-align: center;
-    margin-bottom: 30px;
+    padding: 30px;
+    background-color: #78B3CE;
+    color: #FBF8EF;
 }
 
 .dashboard-header h1 {
     font-size: 2.5rem;
-    color: #333;
+    margin-bottom: 0.5rem;
 }
 
 .dashboard-header .date {
-    color: #777;
     font-size: 1rem;
 }
 
 .dashboard-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+    padding: 20px;
 }
 
-.data-card, .chart-card {
-    background-color: #fff;
+.data-card{
+    background-color: #78B3CE;
+    color: #FBF8EF;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
+    text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+#suhumax, #suhumin, #suhurata2 {
+    font-size: 70px;
+}
+
+.chart-card {
+    color: #FBF8EF;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-height: 470px;
+    padding-bottom: 50px;
+    padding-left:160px ;
+}
+
+.chart-card h3 {
+    color: black;
+    margin-left: -100px;
+}
+
+.data-card:hover{
+    transform: translateY(-5px);
+    background-color: #C9E6F0;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
 
 .data-card h3, .chart-card h3 {
     font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.data-card p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.mini-chart {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
 }
 
 .chart-container {
@@ -58,8 +112,11 @@ body {
     height: 300px;
 }
 
+
+
 @media (max-width: 768px) {
-    .dashboard-content {
-        grid-template-columns: 1fr;
+    .dashboard-header h1 {
+        font-size: 1.8rem;
     }
 }
+

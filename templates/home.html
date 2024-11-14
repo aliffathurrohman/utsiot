@@ -7,43 +7,47 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <div class="dashboard-header">
-        <h1>Sensor Data Dashboard</h1>
+
+    <header class="dashboard-header">
+        <h1>📊 Sensor Data Dashboard</h1>
         <p class="date">Last updated: <span id="updateDate">10 November 2024</span></p>
+    </header>
+    <div class="container1">
+    <div class="dashboard-container">
+
+        <main class="dashboard-content">
+            <div class="data-card">
+                <div class="card-icon">🌡️</div>
+                <h3>Temperature Max</h3>
+                <p id="suhumax">N/A</p>
+                <canvas id="temperatureMaxChart" class="mini-chart"></canvas>
+            </div>
+
+            <div class="data-card">
+                <div class="card-icon">❄️</div>
+                <h3>Temperature Min</h3>
+                <p id="suhumin">N/A</p>
+                <canvas id="temperatureMinChart" class="mini-chart"></canvas>
+            </div>
+            <div class="data-card">
+                <div class="card-icon">🌥️</div>
+                <h3>Average Temperature</h3>
+                <p id="suhurata2">N/A</p>
+                <canvas id="averageTemperatureChart" class="mini-chart"></canvas>
+            </div>
+
+        </main>
     </div>
 
-    <div class="dashboard-content">
-        <div class="data-card">
-            <h3>Temperature Max</h3>
-            <p id="suhumax"></p>
-            <div class="chart-container">
-                <canvas id="temperatureMaxChart"></canvas>
-            </div>
-        </div>
-
-        <div class="data-card">
-            <h3>Temperature Min</h3>
-            <p id="suhumin"></p>
-            <div class="chart-container">
-                <canvas id="temperatureMinChart"></canvas>
-            </div>
-        </div>
-
-        <div class="data-card">
-            <h3>Average Temperature</h3>
-            <p id="suhurata2"></p>
-            <div class="chart-container">
-                <canvas id="averageTemperatureChart"></canvas>
-            </div>
-        </div>
-
-        <div class="chart-card">
-            <h3>Temperature and Humidity Over Time</h3>
-            <canvas id="temperatureHumidityChart"></canvas>
-        </div>
+    <div class="chart-card">
+        <h3>Temperature and Humidity Over Time</h3>
+        <canvas id="temperatureHumidityChart"></canvas>
     </div>
     
+</div>
+
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script>
         // Function to fetch data from the backend
@@ -67,9 +71,6 @@
 
                     // Update all charts
                     updateChart('temperatureHumidityChart', timestamps, temperatureData, humidityData, 'Temperature and Humidity');
-                    updateTemperatureChart('temperatureMaxChart', [latestData.suhumax]);
-                    updateTemperatureChart('temperatureMinChart', [latestData.suhumin]);
-                    updateTemperatureChart('averageTemperatureChart', [latestData.suhurata2]);
                 } else {
                     console.log('No data found');
                 }
@@ -89,16 +90,16 @@
                         {
                             label: 'Temperature (°C)',
                             data: temperatureData,
-                            borderColor: '#FF6384',
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            fill: false
+                            borderColor: '#F96E2A',
+                            backgroundColor: 'rgba(249, 110, 42, 0.2)',
+                            fill: true
                         },
                         {
                             label: 'Humidity (%)',
                             data: humidityData,
-                            borderColor: '#36A2EB',
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            fill: false
+                            borderColor: '#78B3CE',
+                            backgroundColor: 'rgba(120, 179, 206, 0.2)',
+                            fill: true
                         }
                     ]
                 },
@@ -142,8 +143,8 @@
                         {
                             label: 'Temperature (°C)',
                             data: temperatureData,
-                            backgroundColor: '#FF6384',
-                            borderColor: '#FF6384',
+                            backgroundColor: '#F96E2A',
+                            borderColor: '#F96E2A',
                             borderWidth: 1
                         }
                     ]
